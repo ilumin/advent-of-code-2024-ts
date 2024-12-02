@@ -35,8 +35,23 @@ export function isValidSequence(row: number[]): boolean {
   return diffLessThanLimit(row, 3)
 }
 
+export function isSafeSequence(row: number[]): boolean {
+  if (isValidSequence(row)) return true
+
+  return row.some((_, idx, arr) => {
+    const copy = [...arr.slice(0, idx), ...arr.slice(idx + 1)]
+    return isValidSequence(copy)
+  })
+}
+
 export function partOne(data: string): number {
   return prepareData(data)
     .filter(isValidSequence)
+    .length
+}
+
+export function partTwo(data: string): number {
+  return prepareData(data)
+    .filter(isSafeSequence)
     .length
 }

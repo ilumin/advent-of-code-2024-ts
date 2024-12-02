@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'bun:test'
-import { diffLessThanLimit, isAllDecreasing, isAllIncreasing, partOne } from './day-02'
+import { diffLessThanLimit, isAllDecreasing, isAllIncreasing, partOne, partTwo } from './day-02'
 import { readInput } from './utils'
 
 const demo = `7 6 4 2 1
@@ -33,5 +33,10 @@ describe('2024-12-02', async () => {
   it('part one', () => {
     expect(partOne(demo)).toBe(2)
     expect(partOne(data)).toBe(483)
+  })
+
+  it('part two', () => {
+    expect(partTwo(demo)).toBe(4)
+    expect(partTwo(data)).toBe(528)
   })
 });
