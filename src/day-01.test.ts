@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'bun:test'
-import partOne from './day-01'
+import { partOne, partTwo } from './day-01'
 import { readInput } from './utils'
 
 const demo = `3   4
@@ -11,12 +11,18 @@ const demo = `3   4
 
 const input = './src/day-01.input.txt'
 
-describe('2024-12-01', () => {
-  it('part 1', async () => {
-    expect(partOne(demo)).toBe(11)
+describe('2024-12-01', async () => {
 
-    const data = await readInput(input)
+  const data = await readInput(input)
+
+  it('part 1', () => {
+    expect(partOne(demo)).toBe(11)
     expect(partOne(data)).toBe(1603498)
+  })
+
+  it('part 2', () => {
+    expect(partTwo(demo)).toBe(31)
+    expect(partTwo(data)).toBe(25574739)
   })
 });
 

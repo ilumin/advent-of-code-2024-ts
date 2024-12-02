@@ -5,7 +5,7 @@ function prepareInput(input: string): number[][] {
     )
 }
 
-export default function partOne(input: string): number {
+export function partOne(input: string): number {
   const parsedInput = prepareInput(input);
   const [left, right] = parsedInput
     .reduce<number[][]>(
@@ -19,4 +19,27 @@ export default function partOne(input: string): number {
   return left.reduce((prev, curr, idx) => {
     return prev + Math.abs(curr - right[idx])
   }, 0)
+}
+
+export function partTwo(input: string): number {
+  const parsedInput = prepareInput(input);
+  const [left, right] = parsedInput
+    .reduce<number[][]>(
+      ([left, right], [a, b]) => [[...left, a], [...right, b]],
+      [[], []]
+    )
+  const cache = new Map<number, number>()
+
+  return left
+    .map((l) => {
+      if (cache.has(l)) {
+        return cache.get(l)!
+      }
+
+      const count = right.filter(r => r === l).length * l
+      cache.set(l, count)
+      
+      return count
+    })
+    .reduce((p, c) => p + c, 0)
 }
