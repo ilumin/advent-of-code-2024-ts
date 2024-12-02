@@ -1,0 +1,9 @@
+{
+  "name": "advent-of-code-2024-ts",
+  "scripts": {
+    "dev": "bun run --hot src/index.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  }
+}
