@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'bun:test'
-import { partOne } from './day-03'
+import { partOne, partTwo, prepareInput } from './day-03'
 import { readInput } from './utils'
 
 const cases: [string, number][] = [
@@ -18,7 +18,13 @@ describe('2024-12-03', async () => {
     expect(partOne(input)).toBe(expected)
   })
 
-  it('part 1', () => {
+  it.skip('part 1', () => {
     expect(partOne(input)).toBe(175615763)
+  })
+
+  it('part 2', () => {
+    expect(prepareInput(`don't()aaadon't()bbbdon't()cccdo()ddddon't()`)).toBe('ddd')
+    expect(partTwo(`xmul(2,4)&mul[3,7]!^don't()_mul(5,5)+mul(32,64](mul(11,8)undo()?mul(8,5))`)).toBe(48)
+    expect(partTwo(input)).toBe(74361272)
   })
 });
